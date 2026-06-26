@@ -1,0 +1,24 @@
+<div
+  class="spinner-wrapper"
+  [style]="{ '--spinner-color': color(), '--spinner-size': size() + 'px' }"
+>
+  @if (type() === 'dots') {
+    <div class="spinner-dots">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  }
+
+  @if (type() === 'ring') {
+    <div class="spinner-ring"></div>
+  }
+
+  @if (type() === 'lines') {
+    <div class="spinner-lines">
+      @for (item of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; track item) {
+        <span></span>
+      }
+    </div>
+  }
+</div>

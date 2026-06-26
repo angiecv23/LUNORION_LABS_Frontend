@@ -1,0 +1,26 @@
+@if (visible()) {
+  <div class="overlay">
+    <div class="dialog">
+      <div class="dialog-header">
+        <i [class]="'dialog-icon ' + iconClass"></i>
+        <h3>{{ title() }}</h3>
+      </div>
+
+      <p class="dialog-message">{{ message() }}</p>
+
+      <div class="dialog-actions">
+        <button class="btn-cancel" (click)="onCancel()">Cancelar</button>
+        <button
+          class="btn-confirm"
+          [class.info]="type() === 'info'"
+          [class.success]="type() === 'success'"
+          [class.warning]="type() === 'warning'"
+          [class.danger]="type() === 'danger'"
+          (click)="onConfirm()"
+        >
+          Confirmar
+        </button>
+      </div>
+    </div>
+  </div>
+}

@@ -1,0 +1,42 @@
+<header class="top-navbar" [style.background]="backgroundColor()">
+  <div class="left-section">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="right-section">
+    <button class="icon-btn">
+      <i class="pi pi-bell"></i>
+      @if (notifications() > 0) {
+        <span class="badge">
+          {{ notifications() }}
+        </span>
+      }
+    </button>
+
+    <div class="user-info" (click)="toggleDropdown()">
+      <div class="avatar">
+        {{ userName().charAt(0).toUpperCase() }}
+      </div>
+
+      <div class="user-text">
+        <span class="name">{{ userName() }}</span>
+        <span class="role">{{ userRole() }}</span>
+      </div>
+
+      <i [class]="dropdownOpen() ? 'pi pi-chevron-up' : 'pi pi-chevron-down'"></i>
+      @if (dropdownOpen()) {
+        <div class="user-dropdown">
+          <button>
+            <i class="pi pi-user"></i>
+            <span>Mi perfil</span>
+          </button>
+
+          <button>
+            <i class="pi pi-sign-out"></i>
+            <span>Cerrar sesión</span>
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+</header>

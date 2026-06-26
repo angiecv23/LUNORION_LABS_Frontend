@@ -1,0 +1,48 @@
+<aside
+  class="sidebar"
+  [style.background]="backgroundColor()"
+  [style.--primary-color]="primaryColor()"
+  [class.collapsed]="collapsed()"
+>
+  <div class="sidebar-header">
+    <div class="brand clickable-logo" (click)="toggleSidebar()">
+      <img [src]="logoUrl()" class="tenant-logo" />
+
+      @if (!collapsed()) {
+        <span class="tenant-name">{{ title() }}</span>
+      }
+    </div>
+    @if (!collapsed()) {
+      <button class="toggle-btn" (click)="toggleSidebar()">
+        <i class="pi pi-angle-left"></i>
+      </button>
+    }
+  </div>
+
+  <ul>
+    @for (item of visibleItems; track item.route) {
+      <li>
+        <a
+          [routerLink]="item.disabled ? null : item.route"
+          routerLinkActive="active-link"
+          [class.disabled]="item.disabled"
+        >
+          <i [class]="item.icon"></i>
+          @if (!collapsed()) {
+            <span>{{ item.label }}</span>
+          }
+        </a>
+      </li>
+    }
+  </ul>
+
+  <div class="sidebar-footer">
+    <button class="logout-btn" (click)="onLogout()">
+      <i class="pi pi-sign-out"></i>
+
+      @if (!collapsed()) {
+        <span>Cerrar sesión</span>
+      }
+    </button>
+  </div>
+</aside>

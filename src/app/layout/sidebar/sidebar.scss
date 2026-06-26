@@ -1,0 +1,163 @@
+.sidebar {
+  width: 240px;
+  height: 100vh;
+  color: white;
+  font-family: sans-serif;
+  padding: 1.5rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  transition: width 0.3s ease;
+}
+
+.sidebar h2 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 1rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+a {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  padding: 0.85rem;
+  border-radius: 8px;
+}
+
+a i {
+  width: 20px;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.active-link {
+  background: color-mix(
+    in srgb,
+    var(--primary-color) 20%,
+    transparent
+  );
+  border-left: 3px solid #3b82f6;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.tenant-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.tenant-logo {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.clickable-logo {
+  cursor: pointer;
+  user-select: none;
+}
+
+.sidebar-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toggle-btn{
+  cursor: pointer;
+}
+
+.logout-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+}
+
+.logout-btn i {
+  width: 20px;
+  text-align: center;
+}
+
+.collapsed {
+  width: 70px;
+  padding: 1.5rem 0.5rem 1rem 0.5rem;
+
+  .sidebar-header {
+    justify-content: center;
+    padding-bottom: 1.5rem;
+  }
+
+  .brand {
+    justify-content: center;
+    gap: 0;
+  }
+
+  ul a {
+    justify-content: center;
+    padding: 0.85rem 0;
+  }
+
+  .sidebar-footer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .logout-btn {
+    justify-content: center;
+    padding: 0.85rem 0;
+    
+    span {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@if (type() === 'card') {
+  <div class="skeleton-card">
+    <div class="skeleton skeleton-title"></div>
+    <div class="skeleton skeleton-line"></div>
+    <div class="skeleton skeleton-line"></div>
+    <div class="skeleton skeleton-line short"></div>
+  </div>
+}
+
+@if (type() === 'form') {
+  <div class="skeleton-form">
+    <div class="skeleton skeleton-label"></div>
+    <div class="skeleton skeleton-input"></div>
+
+    <div class="skeleton skeleton-label"></div>
+    <div class="skeleton skeleton-input"></div>
+
+    <div class="skeleton skeleton-label"></div>
+    <div class="skeleton skeleton-input"></div>
+  </div>
+}
+
+@if (type() === 'table') {
+  <div class="skeleton-table">
+    <div class="skeleton skeleton-header"></div>
+    @for (row of [1, 2, 3, 4, 5]; track row) {
+      <div class="skeleton skeleton-row"></div>
+    }
+  </div>
+}
