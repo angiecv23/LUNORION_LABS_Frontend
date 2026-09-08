@@ -7,9 +7,10 @@ import { environment } from '../../../environments/environment';
 export interface User {
   id: string;
   email: string;
-  name: string;
-  role: string;
-  permissions: string[];
+  nombres: string;
+  apellidos: string;
+  rol: string;
+  permisos: string[];
 }
 
 export interface LoginRequest {
@@ -20,8 +21,9 @@ export interface LoginRequest {
 
 export interface AuthResponse {
   token: string;
-  refreshToken: string;
-  user: User;
+  tokenType: string;
+  expiresIn: number;
+  usuario: User;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -32,10 +34,8 @@ export class AuthService {
 
   readonly token = signal<string | null>(this.loadToken());
   readonly user = signal<User | null>(null);
-  readonly refreshTokenValue = signal<string | null>(null);
-
   readonly isAuthenticated = computed(() => !!this.token());
-  readonly permissions = computed(() => this.user()?.permissions ?? []);
+  readonly permissions = computed(() => this.user()?.permisos ?? []);
 
   constructor() {
     if (this.token()) {
@@ -60,16 +60,11 @@ export class AuthService {
   logout() {
     this.token.set(null);
     this.user.set(null);
-    this.refreshTokenValue.set(null);
     localStorage.removeItem('auth_token');
-    localStorage.removeItem('refresh_token');
   }
 
   refreshToken() {
-    const rt = this.refreshTokenValue();
-    if (!rt) throw new Error('No refresh token available');
-
-    return this.http.post<AuthResponse>(`${this.apiUrl}/refresh`, { refreshToken: rt }).pipe(
+    return this.http.post<AuthResponse>(`${this.apiUrl}/refresh`, {}).pipe(
       tap((res) => this.handleAuthResponse(res)),
     );
   }
@@ -82,10 +77,8 @@ export class AuthService {
 
   private handleAuthResponse(res: AuthResponse) {
     this.token.set(res.token);
-    this.user.set(res.user);
-    this.refreshTokenValue.set(res.refreshToken);
+    this.user.set(res.usuario);
     localStorage.setItem('auth_token', res.token);
-    localStorage.setItem('refresh_token', res.refreshToken);
   }
 
   private loadToken(): string | null {

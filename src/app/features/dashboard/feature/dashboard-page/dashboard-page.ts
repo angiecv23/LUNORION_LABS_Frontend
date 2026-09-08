@@ -23,8 +23,8 @@ export class DashboardPage {
     { label: 'Usuarios', icon: 'pi pi-users', route: '/users', permission: 'users:read' },
   ]);
 
-  readonly userName = computed(() => this.authStore.user()?.name ?? 'Usuario');
-  readonly userRole = computed(() => this.authStore.user()?.role ?? '');
+  readonly userName = computed(() => this.authStore.user()?.nombres ?? 'Usuario');
+  readonly userRole = computed(() => this.authStore.user()?.rol ?? '');
   readonly permissions = computed(() => this.authStore.permissions());
 
   onLogout(): void {
