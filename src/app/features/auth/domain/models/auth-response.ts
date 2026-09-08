@@ -1,7 +1,9 @@
-import { User } from './user';
+import { User, TenantInfo } from './user';
 
 export interface AuthResponse {
   token: string;
-  refreshToken: string;
-  user: User;
+  tokenType: string;
+  expiresIn: number;
+  usuario: User;
+  tenant: TenantInfo;
 }
