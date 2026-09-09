@@ -1,4 +1,3 @@
-//  tres puntos
 .spinner-dots {
   display: flex;
   justify-content: center;
@@ -24,21 +23,19 @@
   animation-delay: 0s; 
 }
 
-// circulo giratorio
 .spinner-ring {
   width: var(--spinner-size);
   height: var(--spinner-size);
-  border: 4px solid rgba(59,130,246,.2);
+  border: 4px solid color-mix(in srgb, var(--primary) 20%, transparent);
   border-top-color: var(--spinner-color);
   border-radius: 50%;
   animation: spin .8s linear infinite;
   margin: 2rem auto;
 }
 
-// lineas girando
 .spinner-lines {
   width: 54px;
-height: 54px;
+  height: 54px;
   margin: 3rem auto;
   position: relative;
 }

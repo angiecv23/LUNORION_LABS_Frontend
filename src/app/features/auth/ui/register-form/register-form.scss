@@ -5,7 +5,7 @@
 }
 
 h2 {
-  color: #ffffff;
+  color: var(--on-surface);
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
   text-align: center;
@@ -15,10 +15,10 @@ h2 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: rgba(239, 68, 68, 0.15);
-  color: #f87171;
+  background: var(--error-container);
+  color: var(--error);
   padding: 0.75rem 1rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   margin-bottom: 1rem;
   font-size: 0.85rem;
 }
@@ -29,7 +29,7 @@ h2 {
 
 label {
   display: block;
-  color: #cbd5e1;
+  color: var(--on-surface-variant);
   font-size: 0.85rem;
   margin-bottom: 0.5rem;
   font-weight: 500;
@@ -38,10 +38,10 @@ label {
 input {
   width: 100%;
   padding: 0.75rem 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  background: #1e293b;
-  color: #ffffff;
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-md);
+  background: var(--surface-container-low);
+  color: var(--on-surface);
   font-size: 0.9rem;
   outline: none;
   transition: border-color 0.2s ease;
@@ -49,15 +49,15 @@ input {
 }
 
 input:focus {
-  border-color: #3b82f6;
+  border-color: var(--primary);
 }
 
 input::placeholder {
-  color: #64748b;
+  color: var(--on-surface-variant);
 }
 
 .field-error {
-  color: #f87171;
+  color: var(--error);
   font-size: 0.75rem;
   margin-top: 0.25rem;
   display: block;
@@ -67,9 +67,9 @@ input::placeholder {
   width: 100%;
   padding: 0.75rem 1rem;
   border: none;
-  border-radius: 8px;
-  background: #3b82f6;
-  color: #ffffff;
+  border-radius: var(--radius-md);
+  background: var(--primary);
+  color: var(--on-primary);
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
@@ -81,7 +81,7 @@ input::placeholder {
 }
 
 .btn-primary:hover {
-  background: #2563eb;
+  background: color-mix(in srgb, var(--primary) 85%, black);
 }
 
 .btn-primary:disabled {
@@ -92,12 +92,12 @@ input::placeholder {
 .login-link {
   text-align: center;
   margin-top: 1.5rem;
-  color: #94a3b8;
+  color: var(--on-surface-variant);
   font-size: 0.85rem;
 }
 
 .login-link a {
-  color: #3b82f6;
+  color: var(--primary);
   text-decoration: none;
 }
 

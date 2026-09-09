@@ -13,8 +13,8 @@ import { SidebarItem } from './sidebar-item.interface';
 
 export class Sidebar {
   items = input<SidebarItem[]>([]);
-  backgroundColor = input('#1f2937');
-  primaryColor = input('#3b82f6');
+  backgroundColor = input('var(--surface-container)');
+  primaryColor = input('var(--primary)');
   title = input('Lunorion Labs');
   logoUrl = input('');
   permissions = input<string[]>([]);

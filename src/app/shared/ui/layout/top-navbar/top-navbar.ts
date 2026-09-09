@@ -8,7 +8,7 @@ import { Component, input, signal} from '@angular/core';
 })
 
 export class TopNavbar {
-  backgroundColor = input('#1e293b');
+  backgroundColor = input('var(--surface-container-low)');
   userName = input('Pancito con palta');
   userRole = input('ADMINISTRADOR');
   notifications = input(0);

@@ -12,5 +12,5 @@ export class StatCard {
   label = input.required<string>();
   value = input.required<string | number>();
   icon = input('pi pi-chart-bar');
-  color = input('#3b82f6');
+  color = input('var(--primary)');
 }

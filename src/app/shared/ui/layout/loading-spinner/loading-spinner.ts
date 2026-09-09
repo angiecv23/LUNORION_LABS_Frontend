@@ -10,6 +10,6 @@ export type SpinnerType = 'dots' | 'ring' | 'lines';
 })
 export class LoadingSpinner {
   type = input<SpinnerType>('lines');
-  color = input('#3b82f6');
+  color = input('var(--primary)');
   size = input(54);
 }
