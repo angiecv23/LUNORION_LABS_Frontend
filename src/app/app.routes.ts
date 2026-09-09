@@ -8,6 +8,6 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./features/dashboard/dashboard.routes'),
+    loadChildren: () => import('./features/main/main.routes'),
   },
 ];

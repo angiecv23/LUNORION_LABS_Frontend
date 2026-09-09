@@ -1,17 +1,17 @@
 .stat-card {
-  background: #1e293b;
-  border-radius: 12px;
+  background: var(--surface-container-low);
+  border-radius: var(--radius-xl);
   padding: 1.25rem;
   display: flex;
   align-items: center;
   gap: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: var(--border-subtle);
 }
 
 .stat-icon {
   width: 48px;
   height: 48px;
-  border-radius: 12px;
+  border-radius: var(--radius-xl);
   background: color-mix(in srgb, var(--card-color) 20%, transparent);
   display: flex;
   align-items: center;
@@ -28,12 +28,12 @@
 .stat-value {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--on-surface);
   line-height: 1.2;
 }
 
 .stat-label {
   font-size: 0.8rem;
-  color: #94a3b8;
+  color: var(--on-surface-variant);
   margin-top: 0.125rem;
 }

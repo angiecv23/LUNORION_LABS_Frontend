@@ -10,13 +10,13 @@
 }
 
 .dialog {
-  font-family: sans-serif;
+  font-family: var(--font-family-base);
   width: 420px;
-  background: #1f2937;
-  color: white;
-  border-radius: 12px;
+  background: var(--surface-container);
+  color: var(--on-surface);
+  border-radius: var(--radius-xl);
   padding: 1.5rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  box-shadow: var(--elevation-2);
   animation: scaleIn 0.2s ease;
 }
 
@@ -32,23 +32,23 @@
 }
 
 .pi-info-circle {
-  color: #327cf1;
+  color: var(--info);
 }
 
 .pi-check-circle {
-  color: #22c55e;
+  color: var(--success);
 }
 
 .pi-exclamation-triangle {
-  color: #f59e0b;
+  color: var(--warning);
 }
 
 .pi-times-circle {
-  color: #ef4444;
+  color: var(--error);
 }
 
 .dialog-message {
-  color: #cbd5e1;
+  color: var(--on-surface-variant);
   line-height: 1.5;
   margin-bottom: 1.5rem;
 }
@@ -62,7 +62,7 @@
 .btn-cancel,
 .btn-confirm {
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   padding: 0.75rem 1rem;
   cursor: pointer;
   font-weight: 600;
@@ -70,44 +70,44 @@
 }
 
 .btn-cancel {
-  background: #475569;
-  color: white;
+  background: var(--surface-container-high);
+  color: var(--on-surface);
 }
 
 .btn-cancel:hover {
-  background: #64748b;
+  background: var(--surface-container-highest);
 }
 
 .btn-confirm.info {
-  background: #5c80b9;
+  background: color-mix(in srgb, var(--info) 80%, black);
 }
 
 .btn-confirm.success {
-  background: #74b48b;
+  background: color-mix(in srgb, var(--success) 80%, black);
 }
 
 .btn-confirm.warning {
-  background: #da9826;
+  background: color-mix(in srgb, var(--warning) 80%, black);
 }
 
 .btn-confirm.danger {
-  background: #cf6262;
+  background: color-mix(in srgb, var(--error) 80%, black);
 }
 
 .btn-confirm.info:hover {
-  background: #3b82f6;
+  background: var(--info);
 }
 
 .btn-confirm.success:hover {
-  background: #22c55e;
+  background: var(--success);
 }
 
 .btn-confirm.warning:hover {
-  background: #f59e0b;
+  background: var(--warning);
 }
 
 .btn-confirm.danger:hover {
-  background: #ef4444;
+  background: var(--error);
 }
 
 @keyframes fadeIn {

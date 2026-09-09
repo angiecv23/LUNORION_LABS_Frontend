@@ -1,12 +1,12 @@
 .top-navbar {
-  font-family: sans-serif;
+  font-family: var(--font-family-base);
   height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  border-bottom: 1px solid rgba(255,255,255,.08);
-  color: white;
+  border-bottom: var(--border-subtle);
+  color: var(--on-surface);
 }
 
 .left-section {
@@ -26,7 +26,7 @@
   height: 38px;
   border: none;
   background: transparent;
-  color: white;
+  color: var(--on-surface);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -44,8 +44,8 @@
   min-width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #ef4444;
-  color: white;
+  background: var(--error);
+  color: var(--on-error);
   font-size: .65rem;
   display: flex;
   align-items: center;
@@ -64,13 +64,13 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  background: linear-gradient(135deg, var(--primary), var(--primary-container));
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: .85rem;
   font-weight: 600;
-  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 2px 8px rgba(79, 56, 138, 0.3);
 }
 
 .user-text {
@@ -85,7 +85,7 @@
 
 .role {
   font-size: .7rem;
-  color: #94a3b8;
+  color: var(--on-surface-variant);
   text-transform: uppercase;
 }
 
@@ -94,11 +94,10 @@
   top: calc(100% + 12px);
   right: 0;
   min-width: 200px;
-  background: #1e293b;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,.08);
-  box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.5), 
-              0 4px 12px -2px rgba(0, 0, 0, 0.3);
+  background: var(--surface-container-low);
+  border-radius: var(--radius-xl);
+  border: var(--border-subtle);
+  box-shadow: var(--elevation-2);
   padding: 6px;
   overflow: hidden;
   z-index: 1000;
@@ -111,23 +110,23 @@
   gap: 0.75rem;
   border: none;
   background: transparent;
-  color: #cbd5e1;
+  color: var(--on-surface-variant);
   padding: 0.75rem 1rem;
   font-size: 0.85rem;
   font-weight: 500;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .user-dropdown button:hover {
-  color: #ffffff;
-  background: rgba(255,255,255,.08);
+  color: var(--on-surface);
+  background: var(--surface-container-high);
 }
 
 .user-dropdown button:last-child:hover {
-  background: rgba(239, 68, 68, 0.15);
-  color: #f87171;
+  background: var(--error-container);
+  color: var(--error);
 }
 
 @media (max-width: 900px) {

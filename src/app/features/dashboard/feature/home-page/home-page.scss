@@ -3,7 +3,7 @@
 }
 
 .page-title {
-  color: #ffffff;
+  color: var(--on-surface);
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
@@ -17,19 +17,19 @@
 }
 
 .welcome-section {
-  background: #1e293b;
-  border-radius: 12px;
+  background: var(--surface-container-low);
+  border-radius: var(--radius-xl);
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: var(--border-subtle);
 }
 
 .welcome-section h2 {
-  color: #ffffff;
+  color: var(--on-surface);
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
 }
 
 .welcome-section p {
-  color: #94a3b8;
+  color: var(--on-surface-variant);
   font-size: 0.9rem;
 }

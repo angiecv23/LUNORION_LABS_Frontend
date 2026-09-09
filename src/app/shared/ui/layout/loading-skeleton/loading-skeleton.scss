@@ -1,11 +1,11 @@
 .skeleton {
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   margin-bottom: 1rem;
   background: linear-gradient(
     90deg,
-    #1f2937 25%,
-    #374151 50%,
-    #1f2937 75%
+    var(--surface-container) 25%,
+    var(--surface-container-high) 50%,
+    var(--surface-container) 75%
   );
   background-size: 200% 100%;
   animation: loading 1.5s infinite;
@@ -27,7 +27,6 @@
   margin-bottom: 1rem;
 }
 
-//  para formularios
 .skeleton-form {
   padding: 1.5rem;
 }
@@ -42,7 +41,6 @@
   width: 100%;
 }
 
-// para tablas
 .skeleton-table {
   padding: 1.5rem;
 }
@@ -53,7 +51,6 @@
   margin-bottom: .75rem;
 }
 
-// para cards
 .skeleton-card {
   padding: 1.5rem;
 }
