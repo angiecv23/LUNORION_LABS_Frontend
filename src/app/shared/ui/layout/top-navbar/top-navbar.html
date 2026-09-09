@@ -1,6 +1,6 @@
 <header class="top-navbar" [style.background]="backgroundColor()">
   <div class="left-section">
-    <ng-content></ng-content>
+    <app-breadcrumb [items]="breadcrumbItems()" />
   </div>
 
   <div class="right-section">
