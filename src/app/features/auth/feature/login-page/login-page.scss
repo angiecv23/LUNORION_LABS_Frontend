@@ -141,7 +141,6 @@
   object-fit: contain;
 }
 
-
 /* =====================================================
    HERO COPY
 ===================================================== */
@@ -355,14 +354,6 @@
   margin-bottom: 20px;
 }
 
-.auth-brand > img {
-  display: block;
-  width: 180px;
-  height: auto;
-  object-fit: contain;
-  margin: 0 auto 16px;
-}
-
 .brand-logo {
   display: flex;
   justify-content: center;
@@ -422,14 +413,6 @@
   color: #6750a4;
 
   font-size: 13px;
-}
-
-/* =====================================================
-   MOBILE LOGO
-===================================================== */
-
-.mobile-brand {
-  display: none;
 }
 
 /* =====================================================
@@ -505,7 +488,7 @@
 
     min-height: 100vh;
 
-    background: #f9f7fc;
+    background:     #f9f7fc;
   }
 
   .auth-hero {
@@ -539,10 +522,6 @@
     width: 150px;
   }
 
-  .admin-label {
-    margin-bottom: 20px;
-  }
-
   .auth-brand h2 {
     font-size: 24px;
   }
@@ -574,10 +553,5 @@
 
   .brand-logo img {
     width: 130px;
-  }
-
-  .auth-brand > img {
-    width: 130px;
-    margin-bottom: 12px;
   }
 }
