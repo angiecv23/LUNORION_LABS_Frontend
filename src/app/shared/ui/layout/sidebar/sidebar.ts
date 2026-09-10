@@ -16,7 +16,7 @@ export class Sidebar {
   backgroundColor = input('var(--surface-container)');
   primaryColor = input('var(--primary)');
   title = input('Lunorion Labs');
-  logoUrl = input('');
+  logoUrl = input('https://res.cloudinary.com/dp1vgjhsq/image/upload/v1789017515/L-LOGO_qsquwu.png');
   permissions = input<string[]>([]);
   collapsed = signal(false);
   logout = output<void>();

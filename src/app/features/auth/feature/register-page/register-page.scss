@@ -1,32 +1,551 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+/* =====================================================
+   PAGE
+===================================================== */
+
 .auth-page {
   min-height: 100vh;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 0;
+  background: #171321;
+}
+
+/* =====================================================
+   LEFT BRAND PANEL
+===================================================== */
+
+.auth-hero {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+
+  padding: 64px 8%;
+
+  color: #ffffff;
+
+  background:
+    radial-gradient(
+      circle at 80% 25%,
+      rgba(103, 80, 164, 0.5),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #171321 0%,
+      #241942 48%,
+      #2d2055 100%
+    );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  max-width: 660px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* =====================================================
+   DECORATION
+===================================================== */
+
+.hero-decoration {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.hero-decoration-top {
+  width: 720px;
+  height: 720px;
+
+  top: -470px;
+  right: -250px;
+
+  border: 1px solid rgba(207, 189, 255, 0.22);
+
+  background: linear-gradient(
+    140deg,
+    rgba(103, 80, 164, 0.24),
+    rgba(79, 56, 138, 0.03)
+  );
+}
+
+.hero-decoration-bottom {
+  width: 680px;
+  height: 680px;
+
+  bottom: -500px;
+  right: -210px;
+
+  border: 1px solid rgba(201, 167, 77, 0.45);
+
+  background: radial-gradient(
+    circle at 40% 35%,
+    rgba(103, 80, 164, 0.55),
+    rgba(79, 56, 138, 0.12) 45%,
+    transparent 65%
+  );
+}
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.hero-logo {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 72px;
+}
+
+.hero-logo img {
+  width: 206px;
+  height: 76px;
+  transform: scale(1.25);
+  object-fit: contain;
+}
+
+
+/* =====================================================
+   HERO COPY
+===================================================== */
+
+.hero-copy {
+  max-width: 580px;
+}
+
+.hero-eyebrow {
+  display: block;
+
+  margin-bottom: 24px;
+
+  color: #d6cdef;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  letter-spacing: 0.22em;
+
+  line-height: 1.8;
+}
+
+.hero-copy h1 {
+  margin: 0 0 22px;
+
+  color: #ffffff;
+
+  font-size: clamp(42px, 4vw, 62px);
+  font-weight: 700;
+
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+}
+
+.hero-copy h1 span {
+  display: block;
+
+  color: #c9a74d;
+}
+
+.hero-copy > p {
+  max-width: 520px;
+
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.7);
+
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* =====================================================
+   FEATURES
+===================================================== */
+
+.hero-features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 26px 24px;
+
+  margin-top: 50px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+}
+
+.feature-icon {
+  flex-shrink: 0;
+
+  width: 48px;
+  height: 48px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--background);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 12px;
+
+  color: #ffffff;
+
+  background: rgba(103, 80, 164, 0.32);
 }
 
-.auth-card {
-  background: var(--surface-container);
-  border-radius: var(--radius-xl);
-  border: var(--border-subtle);
-  box-shadow: var(--elevation-2);
-  overflow: hidden;
+.feature-icon i {
+  font-size: 18px;
 }
+
+.feature div:last-child {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.feature strong {
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.feature span {
+  color: rgba(255, 255, 255, 0.56);
+
+  font-size: 12px;
+  line-height: 18px;
+}
+
+/* =====================================================
+   HERO FOOTER
+===================================================== */
+
+.hero-footer {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 56px;
+}
+
+.hero-footer > span {
+  width: 42px;
+  height: 1px;
+
+  background: #c9a74d;
+}
+
+.hero-footer p {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.45);
+
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 0.24em;
+}
+
+/* =====================================================
+   RIGHT SECTION
+===================================================== */
+
+.auth-login {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 48px;
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(103, 80, 164, 0.07),
+      transparent 45%
+    ),
+    #f9f7fc;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 440px;
+}
+
+/* =====================================================
+   LOGIN CARD
+===================================================== */
+
+.login-card {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 40px 44px 28px;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  border: 1px solid rgba(103, 80, 164, 0.14);
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 30px 70px rgba(45, 32, 85, 0.08),
+    0 8px 24px rgba(45, 32, 85, 0.05);
+
+  backdrop-filter: blur(16px);
+}
+
+/* =====================================================
+   LOGIN HEADER
+===================================================== */
 
 .auth-brand {
   text-align: center;
-  padding: 2rem 2rem 0;
+
+  margin-bottom: 28px;
 }
 
-.auth-brand h1 {
-  color: var(--on-surface);
-  font-size: 1.5rem;
+.admin-label {
+  display: block;
+
+  margin-bottom: 25px;
+
+  color: #6750a4;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 0.24em;
+}
+
+.auth-brand h2 {
   margin: 0;
+
+  color: #171321;
+
+  font-size: 26px;
+  font-weight: 650;
+
+  line-height: 34px;
+  letter-spacing: -0.025em;
 }
 
 .auth-brand p {
-  color: var(--on-surface-variant);
-  font-size: 0.85rem;
-  margin-top: 0.25rem;
+  margin: 8px 0 0;
+
+  color: #667085;
+
+  font-size: 14px;
+}
+
+/* =====================================================
+   SECURITY
+===================================================== */
+
+.login-security {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 30px;
+  padding-top: 22px;
+
+  border-top: 1px solid #e7e5ec;
+
+  color: #8a829c;
+
+  font-size: 11px;
+}
+
+.login-security i {
+  color: #6750a4;
+
+  font-size: 13px;
+}
+
+/* =====================================================
+   MOBILE LOGO
+===================================================== */
+
+.mobile-brand {
+  display: none;
+}
+
+/* =====================================================
+   COPYRIGHT
+===================================================== */
+
+.login-copyright {
+  margin: 22px 0 0;
+
+  text-align: center;
+
+  color: #9a93a5;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 0.16em;
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1100px) {
+
+  .auth-page {
+    grid-template-columns: 50% 50%;
+  }
+
+  .auth-hero {
+    padding: 48px 40px;
+  }
+
+  .hero-features {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-logo {
+    margin-bottom: 55px;
+  }
+
+  .hero-copy h1 {
+    font-size: 44px;
+  }
+
+  .login-card {
+    padding: 44px 40px 30px;
+  }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 800px) {
+
+  .auth-page {
+    display: block;
+
+    min-height: 100vh;
+
+    background: #f9f7fc;
+  }
+
+  .auth-hero {
+    display: none;
+  }
+
+  .auth-login {
+    min-height: 100vh;
+
+    box-sizing: border-box;
+
+    padding: 24px;
+  }
+
+  .login-container {
+    max-width: 460px;
+  }
+
+  .login-card {
+    padding: 36px 28px 28px;
+
+    border-radius: 20px;
+  }
+
+  .mobile-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 34px;
+  }
+
+  .mobile-brand img {
+    width: 48px;
+    height: 48px;
+
+    object-fit: contain;
+  }
+
+  .mobile-brand > div {
+    display: flex;
+    align-items: baseline;
+
+    gap: 5px;
+  }
+
+  .mobile-brand strong {
+    color: #171321;
+
+    font-size: 18px;
+  }
+
+  .mobile-brand span {
+    color: #6750a4;
+
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .admin-label {
+    margin-bottom: 20px;
+  }
+
+  .auth-brand h2 {
+    font-size: 26px;
+  }
+}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+
+  .auth-login {
+    align-items: flex-start;
+
+    padding: 20px 16px;
+  }
+
+  .login-card {
+    margin-top: 28px;
+
+    padding: 32px 22px 24px;
+  }
+
+  .auth-brand {
+    margin-bottom: 30px;
+  }
 }

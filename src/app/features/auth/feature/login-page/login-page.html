@@ -1,13 +1,133 @@
 <div class="auth-page">
-  <div class="auth-card">
-    <div class="auth-brand">
-      <h1>Lunorion Labs</h1>
-      <p>Panel de Administración</p>
+
+  <!-- Panel visual / branding -->
+  <section class="auth-hero">
+    <div class="hero-curve"></div>
+    <div class="hero-decoration hero-decoration-top"></div>
+    <div class="hero-decoration hero-decoration-bottom"></div>
+
+    <div class="hero-content">
+
+      <div class="hero-logo">
+        <img
+          src="https://res.cloudinary.com/dp1vgjhsq/image/upload/v1789018555/LOGOTIPO_LIGHT_xh1w7w.png"
+          alt="Lunorion Labs"
+        />
+      </div>
+
+      <div class="hero-copy">
+        <span class="hero-eyebrow">
+          GESTIÓN INTELIGENTE PARA TALLERES AUTOMOTRICES
+        </span>
+
+        <h1>
+          Todo tu taller,
+          <span>en un solo sistema</span>
+        </h1>
+
+        <p>
+          Organiza, controla y haz crecer tu taller con una plataforma
+          moderna, segura y diseñada para optimizar cada operación.
+        </p>
+      </div>
+
+      <div class="hero-features">
+
+        <div class="feature">
+          <div class="feature-icon">
+            <i class="pi pi-file"></i>
+          </div>
+
+          <div>
+            <strong>Órdenes de trabajo</strong>
+            <span>Gestiona todo el proceso de servicio.</span>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">
+            <i class="pi pi-calendar"></i>
+          </div>
+
+          <div>
+            <strong>Citas y agenda</strong>
+            <span>Organiza la atención de tus clientes.</span>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">
+            <i class="pi pi-box"></i>
+          </div>
+
+          <div>
+            <strong>Inventario</strong>
+            <span>Control preciso de repuestos y productos.</span>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">
+            <i class="pi pi-chart-bar"></i>
+          </div>
+
+          <div>
+            <strong>Reportes en tiempo real</strong>
+            <span>Información para tomar mejores decisiones.</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hero-footer">
+        <span></span>
+        <p>
+          CONTROL · EFICIENCIA · CRECIMIENTO
+        </p>
+      </div>
+
     </div>
-    <app-login-form
-      [loading]="store.loading()"
-      [error]="store.error()"
-      (login)="onLogin($event)"
-    />
-  </div>
+  </section>
+
+  <!-- Login -->
+  <section class="auth-login">
+
+    <div class="login-container">
+
+      <div class="login-card">
+
+        <div class="auth-brand">
+          
+          <div class="brand-logo">
+            <img src="https://res.cloudinary.com/dp1vgjhsq/image/upload/v1789019778/LOGOTIPO_DARK_ADMIN_vbxemw.png" alt="Lunorion Labs">
+          </div>
+
+          <h2>Iniciar Sesión</h2>
+
+          <p>
+            Ingresa tus credenciales para continuar
+          </p>
+        </div>
+
+        <app-login-form
+          [loading]="store.loading()"
+          [error]="store.error()"
+          (login)="onLogin($event)"
+        />
+
+        <div class="login-security">
+          <i class="pi pi-shield"></i>
+          <span>Acceso seguro y protegido</span>
+        </div>
+
+      </div>
+
+      <p class="login-copyright">
+        © LUNORION LABS
+      </p>
+
+    </div>
+
+  </section>
+
 </div>

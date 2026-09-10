@@ -6,9 +6,10 @@
 >
   <div class="sidebar-header">
     <div class="brand clickable-logo" (click)="toggleSidebar()">
-      <img [src]="logoUrl()" class="tenant-logo" />
-
-      @if (!collapsed()) {
+      @if (logoUrl()) {
+        <img [src]="logoUrl()" class="tenant-logo" />
+      }
+      @if (!collapsed() && !logoUrl()) {
         <span class="tenant-name">{{ title() }}</span>
       }
     </div>
