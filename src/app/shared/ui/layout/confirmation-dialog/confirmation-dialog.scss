@@ -1,0 +1,133 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+.dialog {
+  font-family: var(--font-family-base);
+  width: 420px;
+  background: var(--surface-container);
+  color: var(--on-surface);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--elevation-2);
+  animation: scaleIn 0.2s ease;
+}
+
+.dialog-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.dialog-icon {
+  font-size: 1.5rem;
+}
+
+.pi-info-circle {
+  color: var(--info);
+}
+
+.pi-check-circle {
+  color: var(--success);
+}
+
+.pi-exclamation-triangle {
+  color: var(--warning);
+}
+
+.pi-times-circle {
+  color: var(--error);
+}
+
+.dialog-message {
+  color: var(--on-surface-variant);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.btn-cancel,
+.btn-confirm {
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.btn-cancel {
+  background: var(--surface-container-high);
+  color: var(--on-surface);
+}
+
+.btn-cancel:hover {
+  background: var(--surface-container-highest);
+}
+
+.btn-confirm.info {
+  background: color-mix(in srgb, var(--info) 80%, black);
+}
+
+.btn-confirm.success {
+  background: color-mix(in srgb, var(--success) 80%, black);
+}
+
+.btn-confirm.warning {
+  background: color-mix(in srgb, var(--warning) 80%, black);
+}
+
+.btn-confirm.danger {
+  background: color-mix(in srgb, var(--error) 80%, black);
+}
+
+.btn-confirm.info:hover {
+  background: var(--info);
+}
+
+.btn-confirm.success:hover {
+  background: var(--success);
+}
+
+.btn-confirm.warning:hover {
+  background: var(--warning);
+}
+
+.btn-confirm.danger:hover {
+  background: var(--error);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,19 @@
+<div class="dashboard-layout">
+  <app-sidebar
+    [items]="nav.menuItems()"
+    [permissions]="layout.permissions()"
+    (logout)="layout.logout()"
+  />
+
+  <div class="dashboard-main">
+    <app-top-navbar
+      [breadcrumbItems]="nav.breadcrumbItems()"
+      [userName]="layout.userName()"
+      [userRole]="layout.userRole()"
+    />
+
+    <main class="dashboard-content">
+      <router-outlet />
+    </main>
+  </div>
+</div>
