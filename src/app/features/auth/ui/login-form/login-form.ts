@@ -18,6 +18,11 @@ export class LoginForm {
 
   email = signal('');
   password = signal('');
+  showPassword = signal(false);
+
+  togglePasswordVisibility() {
+    this.showPassword.update(v => !v);
+  }
 
   onSubmit() {
     if (!this.email() || !this.password()) return;
