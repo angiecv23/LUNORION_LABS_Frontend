@@ -1,17 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ClientsForm } from '../clients-form/clients-form';
 
 @Component({
   selector: 'app-clients-list',
   standalone: true,
+  imports: [ClientsForm],
   templateUrl: './clients-list.html',
   styleUrl: './clients-list.scss'
 })
-export class ClientsList implements OnInit {
+export class ClientsList {
+ showClientModal = false;
 
-  loading = false;
-  error = '';
+  openClientModal(): void {
+    this.showClientModal = true;
+  }
 
-  ngOnInit(): void {
-    // para el backenedddd
+  closeClientModal(): void {
+    this.showClientModal = false;
   }
 }

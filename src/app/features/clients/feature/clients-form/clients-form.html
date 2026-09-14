@@ -1,3 +1,156 @@
-<div class="clients-form">
-  <h2>Clientes - Formulario</h2>
+<div class="client-modal-overlay" (click)="closeClientModal()">
+  <div class="client-modal" (click)="$event.stopPropagation()">
+    <div class="client-modal__header">
+      <div>
+        <h2>Registrar Nuevo Cliente</h2>
+        <p>Completa la información del cliente.</p>
+      </div>
+      <button type="button" class="client-modal__close" (click)="closeClientModal()">
+        <i class="pi pi-times"></i>
+      </button>
+    </div>
+
+    <form [formGroup]="clientForm" (ngSubmit)="submitClient()">
+      <div class="client-modal__body">
+        <div class="client-modal__section">
+          <h3>Datos de contacto</h3>
+
+          <div class="client-form-grid">
+            <div class="client-form-field">
+              <label for="nombres">Nombres <span>*</span></label>
+              <input
+                id="nombres"
+                type="text"
+                formControlName="nombres"
+                placeholder="Ingresa los nombres"
+              />
+              @if (clientForm.controls.nombres.touched && clientForm.controls.nombres.invalid) {
+                <small>Ingresa los nombres del cliente.</small>
+              }
+            </div>
+
+            <div class="client-form-field">
+              <label for="apellidos">Apellidos <span>*</span></label>
+              <input
+                id="apellidos"
+                type="text"
+                formControlName="apellidos"
+                placeholder="Ingresa los apellidos"
+              />
+              @if (clientForm.controls.apellidos.touched && clientForm.controls.apellidos.invalid) {
+                <small>Ingresa los apellidos del cliente.</small>
+              }
+            </div>
+
+            <div class="client-form-field">
+              <label for="tipoDocumento">Tipo de documento <span>*</span></label>
+              <select id="tipoDocumento" formControlName="tipoDocumento">
+                <option value="DNI">DNI</option>
+                <option value="RUC">RUC</option>
+                <option value="CE">CE</option>
+              </select>
+            </div>
+
+            <div class="client-form-field">
+              <label for="numeroDocumento">N.º de documento <span>*</span></label>
+              <input
+                id="numeroDocumento"
+                type="text"
+                formControlName="numeroDocumento"
+                placeholder="Ingresa el documento"
+              />
+              @if (clientForm.controls.numeroDocumento.touched && clientForm.controls.numeroDocumento.invalid) {
+                <small>Ingresa el número de documento.</small>
+              }
+            </div>
+
+            <div class="client-form-field">
+              <label for="email">Correo electrónico <span>*</span></label>
+              <input
+                id="email"
+                type="email"
+                formControlName="email"
+                placeholder="correo@ejemplo.com"
+              />
+              @if (clientForm.controls.email.touched && clientForm.controls.email.invalid) {
+                <small>Ingresa un correo electrónico válido.</small>
+              }
+            </div>
+
+            <div class="client-form-field">
+              <label for="telefono">Teléfono <span>*</span></label>
+              <input
+                id="telefono"
+                type="tel"
+                formControlName="telefono"
+                placeholder="999 999 999"
+              />
+              @if (clientForm.controls.telefono.touched && clientForm.controls.telefono.invalid) {
+                <small>Ingresa el teléfono del cliente.</small>
+              }
+            </div>
+
+            <div class="client-form-field client-form-field--full">
+              <label for="direccion">Dirección <span>*</span></label>
+              <input
+                id="direccion"
+                type="text"
+                formControlName="direccion"
+                placeholder="Ingresa la dirección"
+              />
+              @if (clientForm.controls.direccion.touched && clientForm.controls.direccion.invalid) {
+                <small>Ingresa la dirección del cliente.</small>
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="client-modal__section">
+          <h3>Datos fiscales</h3>
+
+          <div class="client-form-grid">
+            <div class="client-form-field client-form-field--full">
+              <label for="razonSocial">Razón social</label>
+              <input
+                id="razonSocial"
+                type="text"
+                formControlName="razonSocial"
+                placeholder="Ingresa la razón social si corresponde"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="client-consent">
+          <label>
+            <input
+              type="checkbox"
+              formControlName="consentimientoDatos"
+            />
+            <span>
+              Autorizo el tratamiento de mis datos personales de acuerdo con la Ley 29733.
+            </span>
+          </label>
+
+          @if (
+            clientForm.controls.consentimientoDatos.touched &&
+            clientForm.controls.consentimientoDatos.invalid
+          ) {
+            <small>Debes aceptar el consentimiento para continuar.</small>
+          }
+        </div>
+      </div>
+
+      <div class="client-modal__footer">
+        <button type="button" class="client-modal__cancel" (click)="closeClientModal()">
+          Cancelar
+        </button>
+
+        <button type="submit" class="client-modal__submit">
+          <i class="pi pi-check"></i>
+          Guardar cliente
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

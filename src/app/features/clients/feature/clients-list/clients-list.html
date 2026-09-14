@@ -24,7 +24,7 @@
           </button>
         </div>
       </div>
-      <button type="button" class="new-client-button">
+      <button type="button" class="new-client-button" (click)="openClientModal()">
         <i class="pi pi-plus"></i>
         <span>Nuevo cliente</span>
       </button>
@@ -91,3 +91,7 @@
     </footer>
   </section>
 </div>
+
+@if (showClientModal) {
+  <app-clients-form (closed)="closeClientModal()"></app-clients-form>
+}
