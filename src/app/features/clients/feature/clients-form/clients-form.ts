@@ -12,12 +12,15 @@ export class ClientsForm {
   private fb = inject(FormBuilder);
 
   @Output() closed = new EventEmitter<void>();
+  @Output() saved = new EventEmitter<void>();
+
+  isSaving = false;
 
   clientForm = this.fb.group({
     nombres: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100), this.onlyLettersValidator]],
     apellidos: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100), this.onlyLettersValidator]],
     tipoDocumento: ['DNI', Validators.required],
-    numeroDocumento: ['', [Validators.required, Validators.maxLength(20)]],
+    numeroDocumento: ['', [Validators.required, Validators.pattern(/^[0-9]{8}$/)]],
     razonSocial: ['', [Validators.maxLength(150)]],
     email: ['', [Validators.required, Validators.email, Validators.maxLength(150)]],
     telefono: ['', [Validators.required, Validators.pattern(/^[0-9]{9}$/)]],
@@ -82,17 +85,33 @@ export class ClientsForm {
   }
 
   submitClient(): void {
+    if (this.isSaving) {
+      return;
+    }
+
     if (this.clientForm.invalid) {
       this.clientForm.markAllAsTouched();
       return;
     }
 
-    const client = this.clientForm.getRawValue();
+    this.isSaving = true;
 
-    console.log(client);
+    const clientData = this.clientForm.getRawValue();
+
+    console.log('Cliente listo para enviar:', clientData);
+
+    setTimeout(() => {
+      this.isSaving = false;
+      this.saved.emit();
+      this.closeClientModal();
+    }, 800);
   }
 
   closeClientModal(): void {
+    if (this.isSaving) {
+      return;
+    }
+
     this.resetForm();
     this.closed.emit();
   }
@@ -119,7 +138,7 @@ export class ClientsForm {
   getErrorMessage(field: string): string {
     const control = this.clientForm.get(field);
 
-    if (!control || !control.errors) {
+    if (!control?.errors) {
       return '';
     }
 
@@ -143,6 +162,10 @@ export class ClientsForm {
       return 'Ingresa un correo electrónico válido.';
     }
 
+    if (control.hasError('onlyLetters')) {
+      return 'Solo se permiten letras y espacios.';
+    }
+
     if (control.hasError('pattern')) {
       const type = this.clientForm.get('tipoDocumento')?.value;
 
@@ -163,14 +186,6 @@ export class ClientsForm {
       if (field === 'telefono') {
         return 'El teléfono debe tener exactamente 9 números.';
       }
-
-      if (field === 'nombres' || field === 'apellidos') {
-        return 'Solo se permiten letras y espacios.';
-      }
-    }
-
-    if (control.hasError('onlyLetters')) {
-      return 'Solo se permiten letras y espacios.';
     }
 
     return 'El valor ingresado no es válido.';

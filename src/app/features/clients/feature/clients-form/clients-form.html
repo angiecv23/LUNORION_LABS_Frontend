@@ -22,10 +22,11 @@
                 id="nombres"
                 type="text"
                 formControlName="nombres"
+                [class.input-invalid]="isInvalid('nombres')"
                 placeholder="Ingresa los nombres"
               />
-              @if (clientForm.controls.nombres.touched && clientForm.controls.nombres.invalid) {
-                <small>Ingresa los nombres del cliente.</small>
+              @if (isInvalid('nombres')) {
+                <small class="field-error">{{ getErrorMessage('nombres') }}</small>
               }
             </div>
 
@@ -35,10 +36,11 @@
                 id="apellidos"
                 type="text"
                 formControlName="apellidos"
+                [class.input-invalid]="isInvalid('apellidos')"
                 placeholder="Ingresa los apellidos"
               />
-              @if (clientForm.controls.apellidos.touched && clientForm.controls.apellidos.invalid) {
-                <small>Ingresa los apellidos del cliente.</small>
+              @if (isInvalid('apellidos')) {
+                <small class="field-error">{{ getErrorMessage('apellidos') }}</small>
               }
             </div>
 
@@ -57,10 +59,11 @@
                 id="numeroDocumento"
                 type="text"
                 formControlName="numeroDocumento"
+                [class.input-invalid]="isInvalid('numeroDocumento')"
                 placeholder="Ingresa el documento"
               />
-              @if (clientForm.controls.numeroDocumento.touched && clientForm.controls.numeroDocumento.invalid) {
-                <small>Ingresa el número de documento.</small>
+              @if (isInvalid('numeroDocumento')) {
+                <small class="field-error">{{ getErrorMessage('numeroDocumento') }}</small>
               }
             </div>
 
@@ -70,10 +73,11 @@
                 id="email"
                 type="email"
                 formControlName="email"
+                [class.input-invalid]="isInvalid('email')"
                 placeholder="correo@ejemplo.com"
               />
-              @if (clientForm.controls.email.touched && clientForm.controls.email.invalid) {
-                <small>Ingresa un correo electrónico válido.</small>
+              @if (isInvalid('email')) {
+                <small class="field-error">{{ getErrorMessage('email') }}</small>
               }
             </div>
 
@@ -83,10 +87,11 @@
                 id="telefono"
                 type="tel"
                 formControlName="telefono"
+                [class.input-invalid]="isInvalid('telefono')"
                 placeholder="999 999 999"
               />
-              @if (clientForm.controls.telefono.touched && clientForm.controls.telefono.invalid) {
-                <small>Ingresa el teléfono del cliente.</small>
+              @if (isInvalid('telefono')) {
+                <small class="field-error">{{ getErrorMessage('telefono') }}</small>
               }
             </div>
 
@@ -96,10 +101,11 @@
                 id="direccion"
                 type="text"
                 formControlName="direccion"
+                [class.input-invalid]="isInvalid('direccion')"
                 placeholder="Ingresa la dirección"
               />
-              @if (clientForm.controls.direccion.touched && clientForm.controls.direccion.invalid) {
-                <small>Ingresa la dirección del cliente.</small>
+              @if (isInvalid('direccion')) {
+                <small class="field-error">{{ getErrorMessage('direccion') }}</small>
               }
             </div>
           </div>
@@ -123,32 +129,36 @@
 
         <div class="client-consent">
           <label>
-            <input
-              type="checkbox"
-              formControlName="consentimientoDatos"
-            />
+            <input type="checkbox" formControlName="consentimientoDatos" />
             <span>
               Autorizo el tratamiento de mis datos personales de acuerdo con la Ley 29733.
             </span>
           </label>
 
-          @if (
-            clientForm.controls.consentimientoDatos.touched &&
-            clientForm.controls.consentimientoDatos.invalid
-          ) {
-            <small>Debes aceptar el consentimiento para continuar.</small>
+          @if (isInvalid('consentimientoDatos')) {
+            <small class="field-error">{{ getErrorMessage('consentimientoDatos') }}</small>
           }
         </div>
       </div>
 
       <div class="client-modal__footer">
-        <button type="button" class="client-modal__cancel" (click)="closeClientModal()">
+        <button
+          type="button"
+          class="cancel-button"
+          [disabled]="isSaving"
+          (click)="closeClientModal()"
+        >
           Cancelar
         </button>
 
-        <button type="submit" class="client-modal__submit">
-          <i class="pi pi-check"></i>
-          Guardar cliente
+        <button type="submit" class="save-button" [disabled]="clientForm.invalid || isSaving">
+          @if (isSaving) {
+            <i class="pi pi-spin pi-spinner"></i>
+            <span>Guardando...</span>
+          } @else {
+            <i class="pi pi-check"></i>
+            <span>Guardar cliente</span>
+          }
         </button>
       </div>
     </form>
