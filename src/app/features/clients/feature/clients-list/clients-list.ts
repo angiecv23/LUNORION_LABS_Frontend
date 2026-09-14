@@ -1,9 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-clients-list',
   standalone: true,
   templateUrl: './clients-list.html',
-  styleUrls: ['./clients-list.scss']
+  styleUrl: './clients-list.scss'
 })
-export class ClientsList {}
+export class ClientsList implements OnInit {
+
+  loading = false;
+  error = '';
+
+  ngOnInit(): void {
+    // para el backenedddd
+  }
+}
