@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
-import { ClientRepository } from '../../domain/ports/client-repository';
+import { ClientRepository, ClientRequest } from '../../domain/ports/client-repository';
 import { Client } from '../../domain/models/client';
 
 @Injectable()
@@ -19,11 +19,11 @@ export class ClientHttpService implements ClientRepository {
     return this.http.get<Client>(`${this.apiUrl}/${id}`);
   }
 
-  create(client: Omit<Client, 'id'>): Observable<Client> {
+  create(client: ClientRequest): Observable<Client> {
     return this.http.post<Client>(this.apiUrl, client);
   }
 
-  update(id: string, client: Partial<Client>): Observable<Client> {
+  update(id: string, client: ClientRequest): Observable<Client> {
     return this.http.put<Client>(`${this.apiUrl}/${id}`, client);
   }
 
