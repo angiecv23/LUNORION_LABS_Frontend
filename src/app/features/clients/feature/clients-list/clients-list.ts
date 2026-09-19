@@ -2,11 +2,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientHttpService } from '../../data-access/api/client-http.service';
 import { Client } from '../../domain/models/client';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-clients-list',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './clients-list.html',
   styleUrl: './clients-list.scss'
 })
