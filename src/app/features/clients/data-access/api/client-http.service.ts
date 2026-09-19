@@ -7,7 +7,7 @@ import { Client } from '../../domain/models/client';
 
 @Injectable()
 export class ClientHttpService implements ClientRepository {
-  private readonly apiUrl = `${environment.apiUrl}/clients`;
+  private readonly apiUrl = `${environment.apiUrl}/clientes`;
 
   constructor(private http: HttpClient) {}
 
@@ -27,7 +27,11 @@ export class ClientHttpService implements ClientRepository {
     return this.http.put<Client>(`${this.apiUrl}/${id}`, client);
   }
 
-  delete(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  deactivate(id: string): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/${id}/desactivar`, {});
+  }
+
+  activate(id: string): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/${id}/activar`, {});
   }
 }
