@@ -3,11 +3,12 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ClientHttpService } from '../../data-access/api/client-http.service';
 import { Client } from '../../domain/models/client';
+import { ConfirmationDialog } from '../../../../shared/ui/layout/confirmation-dialog/confirmation-dialog';
 
 @Component({
   selector: 'app-clients-list',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, ConfirmationDialog],
   templateUrl: './clients-list.html',
   styleUrl: './clients-list.scss'
 })
@@ -18,11 +19,18 @@ export class ClientsList {
 
   clients: Client[] = [];
   filteredClients: Client[] = [];
+
   searchTerm = '';
   statusFilter = '';
+
   loadError = false;
+
   currentPage = 1;
   pageSize = 5;
+
+  showDeactivateDialog = false;
+  selectedClient: Client | null = null;
+  isDeactivating = false;
 
   constructor() {
     this.loadClients();
@@ -30,6 +38,7 @@ export class ClientsList {
 
   loadClients(): void {
     this.loadError = false;
+
     this.clientService.getAll().subscribe({
       next: clients => {
         this.clients = clients;
@@ -66,6 +75,70 @@ export class ClientsList {
     });
 
     this.currentPage = 1;
+  }
+
+  openDeactivateDialog(client: Client): void {
+    this.selectedClient = client;
+    this.showDeactivateDialog = true;
+  }
+
+  closeDeactivateDialog(): void {
+    if (this.isDeactivating) return;
+
+    this.showDeactivateDialog = false;
+    this.selectedClient = null;
+  }
+
+  deactivateClient(): void {
+    if (!this.selectedClient || this.isDeactivating) return;
+
+    this.isDeactivating = true;
+
+    this.clientService.deactivate(this.selectedClient.id).subscribe({
+      next: () => {
+        this.isDeactivating = false;
+        this.showDeactivateDialog = false;
+
+        this.clients = this.clients.map(client =>
+          client.id === this.selectedClient?.id
+            ? { ...client, activo: false }
+            : client
+        );
+
+        this.selectedClient = null;
+        this.applyFilters();
+        this.cdr.detectChanges();
+      },
+      error: () => {
+        this.isDeactivating = false;
+        this.cdr.detectChanges();
+      }
+    });
+  }
+
+  activateClient(client: Client): void {
+    if (this.isDeactivating) return;
+
+    this.isDeactivating = true;
+
+    this.clientService.activate(client.id).subscribe({
+      next: () => {
+        this.isDeactivating = false;
+
+        this.clients = this.clients.map(currentClient =>
+          currentClient.id === client.id
+            ? { ...currentClient, activo: true }
+            : currentClient
+        );
+
+        this.applyFilters();
+        this.cdr.detectChanges();
+      },
+      error: () => {
+        this.isDeactivating = false;
+        this.cdr.detectChanges();
+      }
+    });
   }
 
   get paginatedClients(): Client[] {
