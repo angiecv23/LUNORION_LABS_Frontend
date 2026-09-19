@@ -1,8 +1,8 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { ClientHttpService } from '../../data-access/api/client-http.service';
 import { Client } from '../../domain/models/client';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-clients-list',
@@ -11,41 +11,36 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './clients-list.html',
   styleUrl: './clients-list.scss'
 })
-export class ClientsList implements OnInit {
+export class ClientsList {
   private clientService = inject(ClientHttpService);
   private router = inject(Router);
+  private cdr = inject(ChangeDetectorRef);
 
   clients: Client[] = [];
   filteredClients: Client[] = [];
-
   searchTerm = '';
   statusFilter = '';
-
-  isLoading = false;
   loadError = false;
-
   currentPage = 1;
   pageSize = 5;
 
-  ngOnInit(): void {
+  constructor() {
     this.loadClients();
   }
 
   loadClients(): void {
-    this.isLoading = true;
     this.loadError = false;
-
     this.clientService.getAll().subscribe({
       next: clients => {
         this.clients = clients;
         this.applyFilters();
-        this.isLoading = false;
+        this.cdr.detectChanges();
       },
       error: () => {
         this.clients = [];
         this.filteredClients = [];
         this.loadError = true;
-        this.isLoading = false;
+        this.cdr.detectChanges();
       }
     });
   }
@@ -54,9 +49,11 @@ export class ClientsList implements OnInit {
     const search = this.searchTerm.trim().toLowerCase();
 
     this.filteredClients = this.clients.filter(client => {
+      const fullName = `${client.nombres} ${client.apellidos}`.toLowerCase();
+
       const matchesSearch =
         !search ||
-        `${client.nombres} ${client.apellidos}`.toLowerCase().includes(search) ||
+        fullName.includes(search) ||
         client.numeroDocumento.toLowerCase().includes(search) ||
         client.telefono.toLowerCase().includes(search);
 

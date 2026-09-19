@@ -67,19 +67,7 @@
           </tr>
         </thead>
         <tbody>
-          @if (isLoading) {
-            <tr>
-              <td colspan="7">
-                <div class="clients-empty">
-                  <div class="clients-empty__icon">
-                    <i class="pi pi-spin pi-spinner"></i>
-                  </div>
-                  <h3>Cargando clientes...</h3>
-                  <p>Estamos obteniendo los clientes registrados.</p>
-                </div>
-              </td>
-            </tr>
-          } @else if (loadError) {
+          @if (loadError) {
             <tr>
               <td colspan="7">
                 <div class="clients-empty">
@@ -110,20 +98,31 @@
                 <td>
                   <div class="client-name">
                     <strong>{{ client.nombres }} {{ client.apellidos }}</strong>
+
                     @if (client.razonSocial) {
                       <span>{{ client.razonSocial }}</span>
                     }
                   </div>
                 </td>
+
                 <td>{{ client.tipoDocumento }} {{ client.numeroDocumento }}</td>
-                <td>{{ client.telefono }}</td>
-                <td>{{ client.email }}</td>
+
+                <td>
+                  {{ client.telefono }}
+                </td>
+
+                <td>
+                  {{ client.email }}
+                </td>
+
                 <td>0</td>
+
                 <td>
                   <span [class]="client.activo ? 'chip-success' : 'chip-inactive'">
                     {{ client.activo ? 'Activo' : 'Inactivo' }}
                   </span>
                 </td>
+
                 <td>
                   <div class="client-actions">
                     <button
@@ -133,6 +132,7 @@
                     >
                       <i class="pi pi-eye"></i>
                     </button>
+
                     <button
                       type="button"
                       aria-label="Editar cliente"
