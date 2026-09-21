@@ -5,6 +5,23 @@ import { environment } from '../../../../../environments/environment';
 import { ClientRepository, ClientRequest } from '../../domain/ports/client-repository';
 import { Client } from '../../domain/models/client';
 
+export interface ClientProfitability {
+  clienteId: string;
+  nombreCliente: string;
+  totalFacturado: number;
+  totalCostos: number;
+  margen: number;
+  ordenesCompletadas: number;
+}
+
+export interface WorkHistory {
+  id: string;
+  ordenTrabajoId: string;
+  descripcion: string;
+  estado: string;
+  fechaCreacion: string;
+}
+
 @Injectable()
 export class ClientHttpService implements ClientRepository {
   private readonly apiUrl = `${environment.apiUrl}/clientes`;
@@ -33,5 +50,13 @@ export class ClientHttpService implements ClientRepository {
 
   activate(id: string): Observable<void> {
     return this.http.post<void>(`${this.apiUrl}/${id}/activar`, {});
+  }
+
+  getProfitability(id: string): Observable<ClientProfitability> {
+    return this.http.get<ClientProfitability>(`${this.apiUrl}/${id}/rentabilidad`);
+  }
+
+  getWorkHistory(id: string): Observable<WorkHistory[]> {
+    return this.http.get<WorkHistory[]>(`${this.apiUrl}/${id}/historial-trabajos`);
   }
 }
